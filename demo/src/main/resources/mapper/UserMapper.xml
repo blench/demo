@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.foxconn.demo.dao.UserMapper">
+	<!-- username,pwd,gender,age,tel -->
+  <resultMap id="BaseResultMap" type="com.foxconn.demo.bean.User">
+    <id column="username" jdbcType="VARCHAR" property="username" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />  
+  </resultMap>
+  <insert id="insertUser" parameterType="com.foxconn.demo.bean.User">
+  	insert into usertable (username, pwd, gender, age, tel)
+  	values (#{username, jdbcType=VARCHAR}, #{pwd, jdbcType=VARCHAR}, #{gender, jdbcType=VARCHAR},#{age, jdbcType=INTEGER}, #{tel, jdbcType=VARCHAR})
+  </insert>
+  <delete id="deleteUser" parameterType="java.lang.String">
+  	delete from usertable where username = #{username, jdbcType=VARCHAR}
+  </delete>
+  
+  <update id="updateUser" parameterType="com.foxconn.demo.bean.User">
+  	update usertable
+  	<trim prefix="set" suffixOverrides=",">
+  		<if test="pwd!=null">pwd=#{pwd},</if>
+  		<if test="gender!=null">gender=#{gender},</if>
+  		<if test="age!=null">age=#{age},</if>
+  		<if test="tel!=null">tel=#{tel},</if>
+  	</trim>
+  	where username=#{username, jdbcType=VARCHAR}
+  </update>
+  
+  <select id="queryUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from usertable where username=#{username, jdbcType=VARCHAR}
+  </select>
+  <select id="queryAllUsers" resultMap="BaseResultMap">
+  	select * from usertable
+  </select>
+  <select id="countUsers" resultType="java.lang.Long">
+  	select count(*) from usertable
+  </select>
+  
+  <!-- 批量删除用户 -->
+  <delete id="deleteUserBatch" parameterType="java.util.List">
+  	delete from usertable
+  	where username in
+  	<if test="null!=list and list.size() > 0">
+  		<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+  			#{item.username}
+  		</foreach>
+  	</if>
+  </delete>
+</mapper>
