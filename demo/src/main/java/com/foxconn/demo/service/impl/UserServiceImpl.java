@@ -1,4 +1,4 @@
-package com.foxconn.demo.service;
+package com.foxconn.demo.service.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.foxconn.demo.bean.User;
 import com.foxconn.demo.dao.UserMapper;
+import com.foxconn.demo.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {

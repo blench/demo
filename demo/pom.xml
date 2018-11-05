@@ -121,6 +121,17 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<!--JSR303数据校验支持，
+			注意如果是tomcat7及以上的服务器，则可以直接使用
+			如果是tomcat7以下的服务器，el表达式，需要将服务器中lib中替换成最新的标准el
+		 -->
+		<!-- hibernate validator -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.1.Final</version>
+		</dependency>
   </dependencies>
   <build>
     <finalName>demo</finalName>
