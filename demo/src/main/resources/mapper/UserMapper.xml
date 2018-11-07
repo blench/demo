@@ -37,7 +37,10 @@
   <select id="countUsers" resultType="java.lang.Long">
   	select count(*) from usertable
   </select>
-  
+ 
+  <select id="queryUserByLimit" resultMap="BaseResultMap">
+  	select * from usertable limit #{startPage},#{endPage}
+  </select>
   <!-- 批量删除用户 -->
   <delete id="deleteUserBatch" parameterType="java.util.List">
   	delete from usertable
@@ -48,4 +51,8 @@
   		</foreach>
   	</if>
   </delete>
+  
+  <select id="userLogin" parameterType="com.foxconn.demo.bean.User">
+  	select * from usertable where username=#{username, jdbcType=VARCHAR} and pwd=#{pwd, jdbcType=VARCHAR}
+  </select>
 </mapper>

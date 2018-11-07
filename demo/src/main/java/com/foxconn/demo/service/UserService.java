@@ -20,4 +20,10 @@ public interface UserService {
 	public List<User> getAllUsers();
 	
 	public void deleteUserBatch(List<User> list);
+	
+	public boolean userLogin(User user);
+	
+	public List<User> queryUserPage(int startPage, int endPage);
+	
+	public long countUsers();
 }

@@ -45,4 +45,19 @@ public class UserServiceImpl implements UserService {
 		userMapper.deleteUserBatch(list);
 	}
 
+	public boolean userLogin(User user) {
+		// TODO Auto-generated method stub
+		return userMapper.userLogin(user);
+	}
+
+	public List<User> queryUserPage(int startPage, int endPage) {
+		// TODO Auto-generated method stub
+		return userMapper.queryUserByLimit(startPage, endPage);
+	}
+
+	public long countUsers() {
+		// TODO Auto-generated method stub
+		return userMapper.countUsers();
+	}
+
 }

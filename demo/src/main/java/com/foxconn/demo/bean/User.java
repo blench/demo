@@ -60,5 +60,12 @@ public class User {
 				+ "]";
 	}
 	
+	/**
+	 * 默认的构造参数必须要加上，否则会在spring mvc注册那里报错
+	 */
+	public User() {
+		super();
+	}
+	
 	
 }

@@ -19,7 +19,7 @@
 	
 	<!-- 配置视图控制器，方便页面返回 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/views/"/>
+		<property name="prefix" value="/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	

@@ -3,6 +3,8 @@ package com.foxconn.demo.dao;
 import java.util.List;
 import java.util.concurrent.Delayed;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.foxconn.demo.bean.User;
 
 /**
@@ -26,4 +28,7 @@ public interface UserMapper {
 
 	public int deleteUserBatch(List<User> list);
 	
+	public boolean userLogin(User user);
+	
+	public List<User> queryUserByLimit(@Param("startPage")int startPage, @Param("endPage")int endPage);
 }
